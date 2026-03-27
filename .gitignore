@@ -1,7 +1,6 @@
 # AAA BROKE STUFF fixing with git-filter-repo but don't need that file
 git-filter-repo
 **/__pycache__/
-/__pycache__/
 **/.pytest_cache/
 
 # Logs
