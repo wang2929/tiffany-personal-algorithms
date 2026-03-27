@@ -1,0 +1,19 @@
+[project]
+name = "tiffany-personal-algorithms"
+version = "0.1.0"
+description = "python algo environment"
+authors = [
+    {name = "wang2929", email = "tifalsuk@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.13"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
