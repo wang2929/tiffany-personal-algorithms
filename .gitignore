@@ -1,7 +1,6 @@
 # AAA BROKE STUFF fixing with git-filter-repo but don't need that file
 git-filter-repo
 .python-version
-uv.lock
 **/__pycache__/
 **/.pytest_cache/
 
