@@ -136,18 +136,56 @@ class Solution:
         second = self.sortList(second)
 
         return self.merge(head, second)
+    
+    # https://neetcode.io/problems/reorder-linked-list/question?list=blind75
+    '''
+    You are given the head of a singly linked-list.
+    The positions of a linked list of length = 7 for example, can intially be represented as:
+        [0, 1, 2, 3, 4, 5, 6]
+    Reorder the nodes of the linked list to be in the following order:
+        [0, 6, 1, 5, 2, 4, 3]
+    Notice that in the general case for a list of length = n the nodes are reordered to be in the following order:
+    [0, n-1, 1, n-2, 2, n-3, ...]
+    You may not modify the values in the list's nodes, but instead you must reorder the nodes themselves.
+    '''
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        # get the middle
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        # reverse the second half
+        curr = slow.next
+        prev = slow.next = None
+        while curr:
+            curr.next, prev, curr = prev, curr, curr.next
+        # now interweave forward and reverse
+        fr, rv = head, prev
+        while rv:
+            next_fr, next_rv = fr.next, rv.next
+            fr.next, rv.next = rv, next_fr
+            fr, rv = next_fr, next_rv
+        return head
 
 if __name__=='__main__':
-    print("Remove method")
-    arr = [5,2,13,3,8]
+    print("reorder list method")
+    arr = [2,4,6,8]
     print(arr)
-    print(Solution().removeNodes(ListNode.fromList(arr)))
+    print(Solution().reorderList(ListNode.fromList(arr)))
+    arr = [2,4,6,8,10]
+    print(arr)
+    print(Solution().reorderList(ListNode.fromList(arr)))
     
-    print("Swap method")
-    arr = [7,9,6,6,7,8,3,0,9,5]
-    print(arr)
-    print(Solution().swapNodes(ListNode.fromList(arr), 5))
-    arr = [1,2,3,4,5]
-    print(arr)
-    print(Solution().swapNodes(ListNode.fromList(arr), 2))
+    # print("Remove method")
+    # arr = [5,2,13,3,8]
+    # print(arr)
+    # print(Solution().removeNodes(ListNode.fromList(arr)))
+    
+    # print("Swap method")
+    # arr = [7,9,6,6,7,8,3,0,9,5]
+    # print(arr)
+    # print(Solution().swapNodes(ListNode.fromList(arr), 5))
+    # arr = [1,2,3,4,5]
+    # print(arr)
+    # print(Solution().swapNodes(ListNode.fromList(arr), 2))
     

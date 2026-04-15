@@ -28,7 +28,7 @@ class MergeSort():
             self.mergeSort(arr, start, middle)
             self.mergeSort(arr, middle+1, end)
             self.merge(arr, start, middle, end)
-            
+          
 if __name__ == '__main__':
     arr = [2,0,2,1,1,0]
     arr = [0,0,1,0,1,1]
